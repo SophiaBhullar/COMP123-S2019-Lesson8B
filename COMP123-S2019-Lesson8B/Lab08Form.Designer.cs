@@ -30,11 +30,12 @@
         {
             this.TitleLabel = new System.Windows.Forms.Label();
             this.InfoGroupBox = new System.Windows.Forms.GroupBox();
-            this.NameLabel = new System.Windows.Forms.Label();
-            this.NameTextBox = new System.Windows.Forms.TextBox();
+            this.SubmitButton = new System.Windows.Forms.Button();
             this.AgeTextBox = new System.Windows.Forms.TextBox();
             this.AgeLabel = new System.Windows.Forms.Label();
-            this.SubmitButton = new System.Windows.Forms.Button();
+            this.NameTextBox = new System.Windows.Forms.TextBox();
+            this.NameLabel = new System.Windows.Forms.Label();
+            this.OutputLabel = new System.Windows.Forms.Label();
             this.InfoGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +51,7 @@
             // 
             // InfoGroupBox
             // 
+            this.InfoGroupBox.Controls.Add(this.OutputLabel);
             this.InfoGroupBox.Controls.Add(this.SubmitButton);
             this.InfoGroupBox.Controls.Add(this.AgeTextBox);
             this.InfoGroupBox.Controls.Add(this.AgeLabel);
@@ -63,23 +65,17 @@
             this.InfoGroupBox.TabStop = false;
             this.InfoGroupBox.Text = "Info";
             // 
-            // NameLabel
+            // SubmitButton
             // 
-            this.NameLabel.AutoSize = true;
-            this.NameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NameLabel.Location = new System.Drawing.Point(7, 23);
-            this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(177, 31);
-            this.NameLabel.TabIndex = 0;
-            this.NameLabel.Text = "Enter Name:";
-            // 
-            // NameTextBox
-            // 
-            this.NameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NameTextBox.Location = new System.Drawing.Point(190, 20);
-            this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(242, 38);
-            this.NameTextBox.TabIndex = 1;
+            this.SubmitButton.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.SubmitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubmitButton.Location = new System.Drawing.Point(313, 160);
+            this.SubmitButton.Name = "SubmitButton";
+            this.SubmitButton.Size = new System.Drawing.Size(119, 42);
+            this.SubmitButton.TabIndex = 3;
+            this.SubmitButton.Text = "Submit";
+            this.SubmitButton.UseVisualStyleBackColor = false;
+            this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
             // AgeTextBox
             // 
@@ -87,7 +83,8 @@
             this.AgeTextBox.Location = new System.Drawing.Point(190, 80);
             this.AgeTextBox.Name = "AgeTextBox";
             this.AgeTextBox.Size = new System.Drawing.Size(242, 38);
-            this.AgeTextBox.TabIndex = 3;
+            this.AgeTextBox.TabIndex = 2;
+            this.AgeTextBox.TextChanged += new System.EventHandler(this.AgeTextBox_TextChanged);
             // 
             // AgeLabel
             // 
@@ -99,16 +96,32 @@
             this.AgeLabel.TabIndex = 2;
             this.AgeLabel.Text = "Enter Age:";
             // 
-            // SubmitButton
+            // NameTextBox
             // 
-            this.SubmitButton.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.SubmitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SubmitButton.Location = new System.Drawing.Point(313, 160);
-            this.SubmitButton.Name = "SubmitButton";
-            this.SubmitButton.Size = new System.Drawing.Size(119, 42);
-            this.SubmitButton.TabIndex = 4;
-            this.SubmitButton.Text = "Submit";
-            this.SubmitButton.UseVisualStyleBackColor = false;
+            this.NameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NameTextBox.Location = new System.Drawing.Point(190, 20);
+            this.NameTextBox.Name = "NameTextBox";
+            this.NameTextBox.Size = new System.Drawing.Size(242, 38);
+            this.NameTextBox.TabIndex = 1;
+            this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
+            // 
+            // NameLabel
+            // 
+            this.NameLabel.AutoSize = true;
+            this.NameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NameLabel.Location = new System.Drawing.Point(7, 23);
+            this.NameLabel.Name = "NameLabel";
+            this.NameLabel.Size = new System.Drawing.Size(177, 31);
+            this.NameLabel.TabIndex = 0;
+            this.NameLabel.Text = "Enter Name:";
+            // 
+            // OutputLabel
+            // 
+            this.OutputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OutputLabel.Location = new System.Drawing.Point(32, 166);
+            this.OutputLabel.Name = "OutputLabel";
+            this.OutputLabel.Size = new System.Drawing.Size(275, 31);
+            this.OutputLabel.TabIndex = 4;
             // 
             // Lab08Form
             // 
@@ -121,6 +134,7 @@
             this.Name = "Lab08Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lab08";
+            this.Load += new System.EventHandler(this.Lab08Form_Load);
             this.InfoGroupBox.ResumeLayout(false);
             this.InfoGroupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -137,6 +151,7 @@
         private System.Windows.Forms.Label AgeLabel;
         private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.Label NameLabel;
+        private System.Windows.Forms.Label OutputLabel;
     }
 }
 
